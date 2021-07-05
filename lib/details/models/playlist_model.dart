@@ -24,5 +24,5 @@ class PlaylistModel {
   /// Some times [dateModified] is returned null
   String? get dateModified => _info["date_modified"];
 
-  List<String> get memberIDs => _info["memberIDs"];
+  List<Object?> get memberIDs => _info["memberIDs"];
 }
