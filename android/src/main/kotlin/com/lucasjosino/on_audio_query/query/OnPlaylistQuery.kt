@@ -30,7 +30,8 @@ class OnPlaylistQuery : ViewModel() {
             MediaStore.Audio.Playlists._ID,
             MediaStore.Audio.Playlists.DATE_ADDED,
             MediaStore.Audio.Playlists.DATE_MODIFIED,
-            MediaStore.Audio.Playlists.NAME
+            MediaStore.Audio.Playlists.NAME,
+            MediaStore.Audio.Playlists.Members.AUDIO_ID
     )
 
     //

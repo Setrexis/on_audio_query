@@ -23,4 +23,6 @@ class PlaylistModel {
   ///
   /// Some times [dateModified] is returned null
   String? get dateModified => _info["date_modified"];
+
+  Map<dynamic, dynamic>? get info => _info;
 }
