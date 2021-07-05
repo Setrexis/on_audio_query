@@ -63,7 +63,7 @@ class OnPlaylistQuery : ViewModel() {
                 } else playlistData[playlistMedia] = ""
             }
             val playlistMembersAudioIds: ArrayList<String> = ArrayList()
-            cursor2 = resolver.query(MediaStore.Audio.Playlists.Members.getContentUri("external",cursor.getLong(1)),arrayOf(MediaStore.Audio.Playlists.Members.AUDIO_ID),null,null,null)
+            val cursor2 = resolver.query(MediaStore.Audio.Playlists.Members.getContentUri("external",cursor.getLong(1)),arrayOf(MediaStore.Audio.Playlists.Members.AUDIO_ID),null,null,null)
             while(cursor2 != null && cursor2.moveToNext()){
                 playlistMembersAudioIds.add(cursor2.getString(0))
             }
