@@ -30,8 +30,7 @@ class OnPlaylistQuery : ViewModel() {
             MediaStore.Audio.Playlists._ID,
             MediaStore.Audio.Playlists.DATE_ADDED,
             MediaStore.Audio.Playlists.DATE_MODIFIED,
-            MediaStore.Audio.Playlists.NAME,
-            MediaStore.Audio.Playlists.Members
+            MediaStore.Audio.Playlists.NAME
     )
 
     //
@@ -63,9 +62,16 @@ class OnPlaylistQuery : ViewModel() {
                     playlistData[playlistMedia] = cursor.getString(cursor.getColumnIndex(playlistMedia))
                 } else playlistData[playlistMedia] = ""
             }
+            val playlistMembersAudioIds: ArrayList<String> = ArrayList()
+            cursor2 = resolver.query(MediaStore.Audio.Playlists.Members.getContentUri("external",cursor.getLong(1)),arrayOf(MediaStore.Audio.Playlists.Members.AUDIO_ID),null,null,null)
+            while(cursor2 != null && cursor2.moveToNext()){
+                playlistMembersAudioIds.add(cursor2.getString(0))
+            }
+            playlistData["memberIDs"] = playlistMembersAudioIds;
             playlistList.add(playlistData)
         }
         cursor?.close()
+
         return@withContext playlistList
     }
 }
