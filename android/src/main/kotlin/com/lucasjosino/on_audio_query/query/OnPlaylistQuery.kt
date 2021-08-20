@@ -90,8 +90,9 @@ class OnPlaylistQuery : ViewModel() {
             }
             playlistData["memberIDs"] = playlistMembersAudioIds;
             playlistList.add(playlistData)
+            cursor?.close()
         }
-        cursor?.close()
+
 
         return@withContext playlistList
     }
