@@ -2,6 +2,7 @@ package com.lucasjosino.on_audio_query.query
 
 import android.content.ContentResolver
 import android.content.Context
+import android.provider.MediaStore
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -86,15 +87,13 @@ class OnPlaylistQuery : ViewModel() {
                 while(cursor2 != null && cursor2.moveToNext()){
                     playlistMembersAudioIds.add(cursor2.getString(0))
                 }
-                playlistData["memberIDs"] = playlistMembersAudioIds;
+                playlistData["memberIDs"] = playlistMembersAudioIds
                 playlistList.add(playlistData)
+                cursor2?.close()
             }
             cursor?.close()
+            return@withContext playlistList
         }
-
-
-        return@withContext playlistList
-    }
 }
 
 //Extras:
