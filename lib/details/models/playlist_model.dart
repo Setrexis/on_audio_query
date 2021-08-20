@@ -33,4 +33,6 @@ class PlaylistModel {
   String toString() {
     return _info.toString();
   }
+
+  List<Object?> get memberIDs => _info["memberIDs"];
 }
